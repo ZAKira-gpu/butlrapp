@@ -1,0 +1,27 @@
+emailIdp:
+  - login:
+  - startRegistration:
+  - verifyRegistrationCode:
+  - finishRegistration:
+  - startPasswordReset:
+  - verifyPasswordResetCode:
+  - finishPasswordReset:
+jwtRefresh:
+  - refreshAccessToken:
+chat:
+  - createSession:
+  - getSessions:
+  - deleteSession:
+  - processMessage:
+  - getChatHistory:
+task:
+  - createTask:
+  - getTasks:
+  - getTasksByDate:
+  - getIncompleteTasks:
+  - updateTask:
+  - deleteTask:
+  - completeTask:
+  - clearAll:
+greeting:
+  - hello:

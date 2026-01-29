@@ -1,0 +1,6 @@
+class: ChatSession
+table: chat_session
+fields:
+  title: String
+  createdAt: DateTime
+  userId: int? # Optional for now, can be linked to Auth later

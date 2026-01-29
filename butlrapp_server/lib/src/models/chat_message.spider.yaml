@@ -1,0 +1,10 @@
+class: ChatMessage
+table: chat_message
+fields:
+  content: String
+  isUser: bool
+  timestamp: DateTime
+  # Foreign key to chat session
+  chatSessionId: int
+  # JSON field to store related tasks or rich data if needed
+  metadata: String?

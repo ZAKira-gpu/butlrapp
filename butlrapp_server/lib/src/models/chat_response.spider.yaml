@@ -1,0 +1,6 @@
+class: ChatResponse
+fields:
+  message: String
+  intent: String
+  tasks: List<Task>?
+  sessionId: int?

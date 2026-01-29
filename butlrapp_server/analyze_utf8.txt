@@ -1,0 +1,13 @@
+﻿Analyzing butlrapp_server...
+
+  error - lib\src\endpoints\chat_endpoint.dart:12:11 - The method 'initializeEndpoint' isn't defined in a superclass of 'ChatEndpoint'. Try correcting the name to the name of an existing method, or defining a method named 'initializeEndpoint' in a superclass. - undefined_super_member
+  error - lib\src\endpoints\chat_endpoint.dart:15:27 - The getter 'config' isn't defined for the type 'Server'. Try importing the library that defines 'config', correcting the name to the name of an existing getter, or defining a getter or field named 'config'. - undefined_getter
+  error - lib\src\endpoints\chat_endpoint.dart:93:21 - The property 'year' can't be unconditionally accessed because the receiver can be 'null'. Try making the access conditional (using '?.') or adding a null check to the target ('!'). - unchecked_use_of_nullable_value
+  error - lib\src\endpoints\chat_endpoint.dart:94:21 - The property 'month' can't be unconditionally accessed because the receiver can be 'null'. Try making the access conditional (using '?.') or adding a null check to the target ('!'). - unchecked_use_of_nullable_value
+  error - lib\src\endpoints\chat_endpoint.dart:95:21 - The property 'day' can't be unconditionally accessed because the receiver can be 'null'. Try making the access conditional (using '?.') or adding a null check to the target ('!'). - unchecked_use_of_nullable_value
+  error - lib\src\endpoints\task_endpoint.dart:68:54 - The argument type 'int' can't be assigned to the parameter type 'Task'.  - argument_type_not_assignable
+  error - lib\src\endpoints\task_endpoint.dart:71:20 - The operator '>' isn't defined for the type 'Task'. Try defining the operator '>'. - undefined_operator
+warning - lib\src\endpoints\chat_endpoint.dart:11:16 - The method doesn't override an inherited method. Try updating this class to match the superclass, or removing the override annotation. - override_on_non_overriding_member
+warning - lib\src\endpoints\task_endpoint.dart:10:24 - The operand can't be 'null', so the condition is always 'false'. Try removing the condition, an enclosing condition, or the whole conditional statement. - unnecessary_null_comparison
+
+9 issues found.

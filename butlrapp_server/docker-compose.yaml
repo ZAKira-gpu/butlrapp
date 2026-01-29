@@ -1,0 +1,44 @@
+services:
+  # Development services
+  postgres:
+    image: pgvector/pgvector:pg16
+    ports:
+      - "8090:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: butlrapp
+      POSTGRES_PASSWORD: "KNtVC_ovyDrTcaylRufH3GAkTO2OXelV"
+    volumes:
+      - butlrapp_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:6.2.6
+    ports:
+      - "8091:6379"
+    command: redis-server --requirepass "YuXI76twiLo1UI6Fp0tpzQeItqaQQOk5"
+    environment:
+      - REDIS_REPLICATION_MODE=master
+
+  # Test services
+  postgres_test:
+    image: pgvector/pgvector:pg16
+    ports:
+      - "9090:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: butlrapp_test
+      POSTGRES_PASSWORD: "vr3SflwW8IuRKZeRoA5NwoBXaMG3IOi4"
+    volumes:
+      - butlrapp_test_data:/var/lib/postgresql/data
+
+  redis_test:
+    image: redis:6.2.6
+    ports:
+      - "9091:6379"
+    command: redis-server --requirepass "1g6mWwbg_-wYzoWTe-h402SWv6qh9COF"
+    environment:
+      - REDIS_REPLICATION_MODE=master
+
+volumes:
+  butlrapp_data:
+  butlrapp_test_data:

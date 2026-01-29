@@ -1,0 +1,38 @@
+Error: Null check operator used on a null value
+Stack: #0      ChatEndpoint.processMessage (package:butlrapp_server/src/endpoints/chat_endpoint.dart:56:40)
+<asynchronous suspension>
+#1      Server._handleEndpointCall (package:serverpod/src/server/server.dart:444:22)
+<asynchronous suspension>
+#2      Server._endpoints (package:serverpod/src/server/server.dart:311:12)
+<asynchronous suspension>
+#3      Server._reportException.<anonymous closure> (package:serverpod/src/server/server.dart:205:16)
+<asynchronous suspension>
+#4      Server._headers.<anonymous closure> (package:serverpod/src/server/server.dart:286:22)
+<asynchronous suspension>
+#5      _RoutingMiddlewareBuilder.call.<anonymous closure> (package:relic/src/middleware/routing_middleware.dart:121:18)
+<asynchronous suspension>
+#6      _RelicServer._wrapHandlerWithMiddleware.<anonymous closure> (package:relic/src/relic_server.dart:151:24)
+<asynchronous suspension>
+#7      _RelicServer._handleRequest (package:relic/src/relic_server.dart:127:22)
+<asynchronous suspension>
+
+
+Error: Exception: Failed to create session: ID is null
+Stack: #0      ChatEndpoint.processMessage (package:butlrapp_server/src/endpoints/chat_endpoint.dart:58:36)
+<asynchronous suspension>
+#1      Server._handleEndpointCall (package:serverpod/src/server/server.dart:444:22)
+<asynchronous suspension>
+#2      Server._endpoints (package:serverpod/src/server/server.dart:311:12)
+<asynchronous suspension>
+#3      Server._reportException.<anonymous closure> (package:serverpod/src/server/server.dart:205:16)
+<asynchronous suspension>
+#4      Server._headers.<anonymous closure> (package:serverpod/src/server/server.dart:286:22)
+<asynchronous suspension>
+#5      _RoutingMiddlewareBuilder.call.<anonymous closure> (package:relic/src/middleware/routing_middleware.dart:121:18)
+<asynchronous suspension>
+#6      _RelicServer._wrapHandlerWithMiddleware.<anonymous closure> (package:relic/src/relic_server.dart:151:24)
+<asynchronous suspension>
+#7      _RelicServer._handleRequest (package:relic/src/relic_server.dart:127:22)
+<asynchronous suspension>
+
+

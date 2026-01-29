@@ -1,0 +1,144 @@
+﻿SERVERPOD version: 3.2.3, dart: 3.10.7 (stable) (Tue Dec 23 00:01:57 2025 -0800) on "windows_x64", time: 2026-01-27 09:56:28.414372Z
+runMode: development
+serverId: default
+role: monolith
+loggingMode: normal
+applyMigrations: true
+applyRepairMigration: false
+SERVERPOD initialized, time: 2026-01-27 09:56:28.474167Z
+Latest database migration already applied.
+dart : 2026-01-27 
+09:56:29.131048Z 
+ERROR: Failed to 
+bind socket, port 
+8080 may already be 
+in use.
+At line:1 char:1
++ dart bin/main.dart 
+--apply-migrations > 
+server_log.txt 2>&1
++ ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: (2026-01   
+ -27 09:5...eady     
+be in use.:Strin    
+g) [], RemoteExc    
+eption
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+2026-01-27 
+09:56:29.131048Z 
+ERROR: 
+SocketException: 
+Failed to create 
+server socket (OS 
+Error: Only one 
+usage of each socket 
+address 
+(protocol/network 
+address/port) is 
+normally permitted, 
+errno = 10048), 
+address = ::, port = 
+8080
+#0      
+_NativeSocket.bind (d
+art:io-patch/socket_p
+atch.dart:1220:7)
+<asynchronous 
+suspension>
+#1      _RawServerSoc
+ket.bind.<anonymous 
+closure> (dart:io-pat
+ch/socket_patch.dart:
+2166:12)
+<asynchronous 
+suspension>
+#2      _ServerSocket
+.bind.<anonymous 
+closure> (dart:io-pat
+ch/socket_patch.dart:
+2489:12)
+<asynchronous 
+suspension>
+#3      _HttpServer.b
+ind.<anonymous 
+closure> (dart:_http/
+http_impl.dart:3472:2
+4)
+<asynchronous 
+suspension>
+#4      
+bindHttpServer (packa
+ge:relic/src/adapter/
+io/bind_http_server.d
+art:31:12)
+<asynchronous 
+suspension>
+#5      
+IOAdapter.bind (packa
+ge:relic/src/adapter/
+io/io_adapter.dart:53
+:7)
+<asynchronous 
+suspension>
+#6      _RelicServer.
+mountAndStart (packag
+e:relic/src/relic_ser
+ver.dart:62:16)
+<asynchronous 
+suspension>
+#7      
+RelicApp._init (packa
+ge:relic/src/router/r
+elic_app.dart:79:5)
+<asynchronous 
+suspension>
+#8      RelicApp.run 
+(package:relic/src/ro
+uter/relic_app.dart:6
+6:5)
+<asynchronous 
+suspension>
+#9      Server.start 
+(package:serverpod/sr
+c/server/server.dart:
+167:22)
+<asynchronous 
+suspension>
+#10     Serverpod._un
+guardedStart (package
+:serverpod/src/server
+/serverpod.dart:705:2
+5)
+<asynchronous 
+suspension>
+#11     Serverpod.sta
+rt.<anonymous 
+closure> (package:ser
+verpod/src/server/ser
+verpod.dart:625:9)
+<asynchronous 
+suspension>
+#12     
+Serverpod.start (pack
+age:serverpod/src/ser
+ver/serverpod.dart:62
+4:7)
+<asynchronous 
+suspension>
+#13     run (package:
+butlrapp_server/serve
+r.dart:77:3)
+<asynchronous 
+suspension>
+
+2026-01-27 09:56:29.144012Z WebServer  INFO: Webserver listening on http://localhost:8082
+Failed to start the 
+Serverpod servers, 
+see logs for details.

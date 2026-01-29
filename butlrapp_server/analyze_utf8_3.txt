@@ -1,0 +1,5 @@
+﻿Analyzing butlrapp_server...
+
+  error - lib\src\endpoints\chat_endpoint.dart:17:35 - The getter 'passwords' isn't defined for the type 'Serverpod'. Try importing the library that defines 'passwords', correcting the name to the name of an existing getter, or defining a getter or field named 'passwords'. - undefined_getter
+
+1 issue found.

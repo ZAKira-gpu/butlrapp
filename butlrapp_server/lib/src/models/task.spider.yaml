@@ -1,0 +1,11 @@
+class: Task
+table: task
+fields:
+  title: String
+  description: String?
+  priority: TaskPriority
+  dueAt: DateTime?
+  recurrence: String?
+  recurrenceInterval: int?
+  completed: bool
+  createdAt: DateTime
