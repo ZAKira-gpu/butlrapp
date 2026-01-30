@@ -1,4 +1,5 @@
 # Butlr AI Task Manager 🤖📝
+<img width="1920" height="960" alt="Thumbnail" src="https://github.com/user-attachments/assets/463e94ea-9dba-42e1-bc59-9e6366240ea7" />
 
 Butlr is a modern, AI-powered task management application designed to simplify your life through natural language understanding. Whether you're typing or speaking, Butlr understands your intent, extracts task details, and organizes your schedule with elegance.
 
