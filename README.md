@@ -4,9 +4,10 @@ Butlr is a modern, AI-powered task management application designed to simplify y
 
 ## ✨ Visual Overview
 
-<img width="375" height="812" alt="splash screen" src="https://github.com/user-attachments/assets/17fa4c32-52ed-47ba-a64f-b0121f85e506" />                  <img width="375" height="812" alt="ai screen" src="https://github.com/user-attachments/assets/2548c7a2-bbe4-408e-9dd3-be034fc30900" />                    <img width="375" height="812" alt="ai 1" src="https://github.com/user-attachments/assets/faec17dc-f27c-43d6-b654-06473d4b13a3" />                                    
+<img width="375" height="812" alt="splash screen" src="https://github.com/user-attachments/assets/17fa4c32-52ed-47ba-a64f-b0121f85e506" />                  <img width="375" height="812" alt="ai screen" src="https://github.com/user-attachments/assets/2548c7a2-bbe4-408e-9dd3-be034fc30900" />                    
+<img width="375" height="812" alt="ai 1" src="https://github.com/user-attachments/assets/faec17dc-f27c-43d6-b654-06473d4b13a3" />                           <img width="375" height="812" alt="task" src="https://github.com/user-attachments/assets/87f2501c-2ffa-4929-9246-91c6d3f65e36" />         
 
-<img width="375" height="812" alt="task" src="https://github.com/user-attachments/assets/87f2501c-2ffa-4929-9246-91c6d3f65e36" />
+
 
 
 
