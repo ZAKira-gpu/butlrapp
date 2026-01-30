@@ -36,6 +36,7 @@ dependencies:
   intl: ^0.20.2
   google_fonts: ^7.1.0
   flutter_animate: ^4.5.2
+  speech_to_text: ^7.0.0
 
 dev_dependencies:
   flutter_lints: '>=3.0.0 <7.0.0'
@@ -77,6 +78,14 @@ flutter:
     - assets/send.svg
     - assets/splash.png
     - assets/butlr.png
+    - assets/fonts/MaterialIcons-Regular.ttf
+
+  # Explicit Material Icons font for Flutter web (WASM) – framework default often fails to load
+  fonts:
+    - family: MaterialIcons
+      fonts:
+        - asset: assets/fonts/MaterialIcons-Regular.ttf
+
 dependency_overrides:
   flutter_secure_storage: ^10.0.0
 

@@ -1,0 +1,79 @@
+# Butlr AI Task Manager 🤖📝
+
+Butlr is a modern, AI-powered task management application designed to simplify your life through natural language understanding. Whether you're typing or speaking, Butlr understands your intent, extracts task details, and organizes your schedule with elegance.
+
+## ✨ Visual Overview
+
+````carousel
+![AI Conversational Interface](file:///C:/Users/Dell/.gemini/antigravity/brain/cba1cd92-9fe9-49e3-989a-d586e96a0f9d/butlr_chat_ui_1769766110716.png)
+<!-- slide -->
+![Smart Task Organization](file:///C:/Users/Dell/.gemini/antigravity/brain/cba1cd92-9fe9-49e3-989a-d586e96a0f9d/butlr_tasks_ui_1769766132897.png)
+<!-- slide -->
+![Calendar View & Date Strip](file:///C:/Users/Dell/.gemini/antigravity/brain/cba1cd92-9fe9-49e3-989a-d586e96a0f9d/butlr_calendar_ui_1769766184471.png)
+<!-- slide -->
+![Live Schedule Timeline](file:///C:/Users/Dell/.gemini/antigravity/brain/cba1cd92-9fe9-49e3-989a-d586e96a0f9d/butlr_schedule_ui_1769766207775.png)
+````
+
+## 🌟 Key Features in Detail
+
+### 💬 Conversational AI Engine
+Butlr isn't just a list; it's an assistant. Powered by **Novita AI (Llama 3.1)**, it processes your natural language to:
+- **Extract Intent**: Understands if you want to create, delete, or just check your schedule.
+- **Identify Entities**: Pulls out dates ("next Friday"), times ("at noon"), and priorities ("urgent medical appointment").
+- **Contextual Memory**: Remembers previous messages so you can say "change *that* to 4pm" and it knows what you mean.
+
+### 📅 Dynamic Scheduling & Calendar
+- **Horizontal Date Strip**: Quickly jump between days with a sleek scrolling date picker.
+- **Smart Grouping**: Automatically organizes your main list into *Overdue*, *Today*, *Tomorrow*, and *Upcoming* buckets.
+- **Recurring Intelligence**: Just say "every Monday" and Butlr handles the rest, projecting your tasks into the future.
+
+### ⏱️ Live Time Tracking
+- **Current Time Indicator**: Never lose track of your day. A bright red line moves dynamically through your schedule and calendar views, showing you exactly where you are relative to your tasks.
+
+### 🎨 Premium Design System
+- **Glassmorphism**: Elegant, semi-transparent UI elements for a high-end feel.
+- **Dark Mode Optimization**: Designed for readability and aesthetic appeal in low-light environments.
+- **Micro-animations**: Smooth transitions and gestures (like swipe-to-snooze) for a fluid user experience.
+
+## 🚀 Technology Stack
+
+### Frontend
+- **Framework**: [Flutter](https://flutter.dev) (Web, Android, iOS)
+- **State Management**: Reactive Listenable pattern.
+- **Icons**: Lucide Icons & Custom SVG assets.
+
+### Backend
+- **Framework**: [Serverpod](https://serverpod.dev) (The real-time server for Flutter).
+- **Database**: PostgreSQL (managed via Docker locally).
+- **Security**: Environment-based secret management for API keys.
+
+### AI Intelligence
+- **Primary LLM**: Llama 3.1 via [Novita AI](https://novita.ai/).
+- **Protocol**: OpenAI-compatible REST API integration.
+
+## 🛠️ Getting Started
+
+### 1. Backend Setup
+```powershell
+cd butlrapp_server
+docker-compose up -d
+dart bin/main.dart --apply-migrations
+```
+
+### 2. Frontend Setup
+```powershell
+cd butlrapp_flutter
+flutter pub get
+flutter run
+```
+
+## 🌍 Live Deployment
+
+Butlr is hosted on **Serverpod Cloud**.
+
+- **Web App**: [https://butlr1.serverpod.space/app/](https://butlr1.serverpod.space/app/)
+- **API Endpoint**: [https://butlr1.api.serverpod.space/](https://butlr1.api.serverpod.space/)
+- **Admin Dashboard**: [https://butlr1.insights.serverpod.space/](https://butlr1.insights.serverpod.space/)
+
+---
+Created for Hackathon 2026. 🚀

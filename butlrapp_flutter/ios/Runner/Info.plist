@@ -45,5 +45,9 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Butlr uses the microphone for voice input in chat.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Butlr uses speech recognition to turn your voice into text.</string>
 </dict>
 </plist>

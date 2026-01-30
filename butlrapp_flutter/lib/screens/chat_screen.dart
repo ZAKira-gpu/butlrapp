@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'package:butlrapp_client/butlrapp_client.dart';
-import 'package:serverpod_flutter/serverpod_flutter.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import '../main.dart';
 // import 'package:butlr/models/message.dart'; // We'll need to define this or use client models
@@ -37,8 +37,6 @@ class Message {
   });
 }
 
-// STT disabled for web build stability
-
 class ChatScreen extends StatefulWidget {
   final int? sessionId;
   const ChatScreen({super.key, this.sessionId});
@@ -55,9 +53,11 @@ class _ChatScreenState extends State<ChatScreen> {
   // Dependencies
   // We use the global 'client' defined in main.dart
   
-  // Voice Input (Disabled for web)
+  final stt.SpeechToText _speech = stt.SpeechToText();
+  bool _speechReady = false;
   bool _isListening = false;
-  
+  String _lastCommitted = '';
+
   final List<Message> _messages = [];
   bool _isTyping = false;
   int? _currentSessionId;
@@ -259,8 +259,66 @@ class _ChatScreenState extends State<ChatScreen> {
     });
   }
 
-  void _listen() {
-    // STT disabled for web
+  Future<void> _listen() async {
+    if (_isTyping) return;
+
+    if (_isListening) {
+      await _speech.stop();
+      if (mounted) setState(() => _isListening = false);
+      return;
+    }
+
+    if (!_speechReady) {
+      _speechReady = await _speech.initialize(
+        onError: (e) {
+          if (mounted) {
+            setState(() => _isListening = false);
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text('Speech error: ${e.errorMsg}')),
+            );
+          }
+        },
+        onStatus: (status) {
+          if (mounted && status == 'notListening' && _isListening) {
+            setState(() => _isListening = false);
+          }
+        },
+      );
+      if (!_speechReady && mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Speech recognition not available. Check mic permission.'),
+          ),
+        );
+        return;
+      }
+    }
+
+    _lastCommitted = _controller.text;
+    setState(() => _isListening = true);
+
+    await _speech.listen(
+      onResult: (result) {
+        if (!mounted) return;
+        final text = result.recognizedWords;
+        if (text.isEmpty) return;
+        final base = _lastCommitted.isEmpty ? '' : '$_lastCommitted ';
+        if (result.finalResult) {
+          _lastCommitted = base + text;
+          _controller.text = _lastCommitted;
+        } else {
+          _controller.text = base + text;
+        }
+        _controller.selection = TextSelection.collapsed(offset: _controller.text.length);
+        setState(() {});
+      },
+      listenFor: const Duration(seconds: 30),
+      pauseFor: const Duration(seconds: 3),
+      listenOptions: stt.SpeechListenOptions(
+        partialResults: true,
+        listenMode: stt.ListenMode.dictation,
+      ),
+    );
   }
 
   void _resetChat() {
@@ -389,7 +447,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.05),
+                    color: Colors.black.withValues(alpha: 0.05),
                     blurRadius: 10,
                     offset: const Offset(0, 4),
                   )
