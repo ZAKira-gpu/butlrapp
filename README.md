@@ -4,15 +4,11 @@ Butlr is a modern, AI-powered task management application designed to simplify y
 
 ## ✨ Visual Overview
 
-````carousel
-![AI Conversational Interface](file:///C:/Users/Dell/.gemini/antigravity/brain/cba1cd92-9fe9-49e3-989a-d586e96a0f9d/butlr_chat_ui_1769766110716.png)
-<!-- slide -->
-![Smart Task Organization](file:///C:/Users/Dell/.gemini/antigravity/brain/cba1cd92-9fe9-49e3-989a-d586e96a0f9d/butlr_tasks_ui_1769766132897.png)
-<!-- slide -->
-![Calendar View & Date Strip](file:///C:/Users/Dell/.gemini/antigravity/brain/cba1cd92-9fe9-49e3-989a-d586e96a0f9d/butlr_calendar_ui_1769766184471.png)
-<!-- slide -->
-![Live Schedule Timeline](file:///C:/Users/Dell/.gemini/antigravity/brain/cba1cd92-9fe9-49e3-989a-d586e96a0f9d/butlr_schedule_ui_1769766207775.png)
-````
+<img width="375" height="812" alt="splash screen" src="https://github.com/user-attachments/assets/17fa4c32-52ed-47ba-a64f-b0121f85e506" />                  <img width="375" height="812" alt="ai screen" src="https://github.com/user-attachments/assets/2548c7a2-bbe4-408e-9dd3-be034fc30900" />                    <img width="375" height="812" alt="ai 1" src="https://github.com/user-attachments/assets/faec17dc-f27c-43d6-b654-06473d4b13a3" />                                    
+
+<img width="375" height="812" alt="task" src="https://github.com/user-attachments/assets/87f2501c-2ffa-4929-9246-91c6d3f65e36" />
+
+
 
 ## 🌟 Key Features in Detail
 
