@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
 import 'package:serverpod/serverpod.dart';
 import '../generated/protocol.dart';
 import '../services/ai_service.dart';
@@ -51,8 +50,12 @@ class ChatEndpoint extends Endpoint {
           createdAt: DateTime.now(),
         );
         final insertedSession = await ChatSession.db.insertRow(session, newSession);
-        if (insertedSession.id == null) throw Exception('Failed to create session: ID is null');
-        activeSessionId = insertedSession.id!;
+        final insertedId = insertedSession.id;
+        if (insertedId == null) {
+          session.log('Failed to create chat session: insertRow returned null id', level: LogLevel.error);
+          throw Exception('Failed to create session: ID is null');
+        }
+        activeSessionId = insertedId;
       } else {
         activeSessionId = sessionId;
       }
@@ -166,7 +169,12 @@ class ChatEndpoint extends Endpoint {
   }
 
   AIService _getAiService(Session session) {
-    final apiKey = session.serverpod.getPassword('novitaApiKey') ?? 'sk_ibfw8oxL29xDBrz-qlHvEtbZAULOsu4qKz9sW1jCFL4';
+    // API key must be set in config/passwords.yaml or config/*.yaml as novitaApiKey
+    final apiKey = session.serverpod.getPassword('novitaApiKey');
+    if (apiKey == null || apiKey.isEmpty) {
+      session.log('Novita API key not configured. Set novitaApiKey in config.', level: LogLevel.error);
+      throw StateError('Novita API key not configured');
+    }
     return AIService(apiKey);
   }
 }

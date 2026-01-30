@@ -7,8 +7,8 @@ COPY . .
 RUN dart pub get
 RUN dart compile exe bin/main.dart -o bin/server
 
-# Final stage
-FROM alpine:latest
+# Final stage - use Debian (dart compile exe produces glibc-linked binary)
+FROM debian:bookworm-slim
 
 # Environment variables
 ENV runmode=production
@@ -16,10 +16,7 @@ ENV serverid=default
 ENV logging=normal
 ENV role=monolith
 
-# Copy runtime dependencies
-COPY --from=build /runtime/ /
-
-# Copy compiled server executable
+# Copy compiled server executable (self-contained, no /runtime/ needed)
 COPY --from=build /app/bin/server server
 
 # Copy configuration files and resources
@@ -30,7 +27,7 @@ COPY --from=build /app/migrations/ migrations/
 # This file is required to enable the endpoint log filter in Insights.
 COPY --from=build /app/lib/src/generated/protocol.yaml lib/src/generated/protocol.yaml
 
-# Expose ports
+# Expose ports (API, Insights, Web)
 EXPOSE 8080
 EXPOSE 8081
 EXPOSE 8082

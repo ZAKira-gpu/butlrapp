@@ -466,7 +466,7 @@ class _ChatScreenState extends State<ChatScreen> {
           GestureDetector(
             onTap: _sendMessage,
             child: SvgPicture.asset(
-              'assets/send.svg', 
+              'assets/send.svg',
               width: 52,
               height: 52,
             ),

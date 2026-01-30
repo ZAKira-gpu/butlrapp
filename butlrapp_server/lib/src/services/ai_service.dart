@@ -5,9 +5,11 @@ import '../generated/protocol.dart';
 import 'package:intl/intl.dart';
 
 /// AI Service for processing natural language task requests using Novita AI (OpenAI-compatible)
+/// API docs: https://novita.ai/docs/api-reference/model-apis-llm-create-chat-completion
 class AIService {
   final String _apiKey;
-  final String _baseUrl = 'https://api.novita.ai/v3/openai';
+  // Official Novita OpenAI-compatible endpoint (v1)
+  final String _baseUrl = 'https://api.novita.ai/openai/v1';
   final String _model = 'meta-llama/llama-3.1-8b-instruct';
   
   AIService(this._apiKey);
@@ -44,27 +46,34 @@ class AIService {
           'model': _model,
           'messages': messages,
           'temperature': 0.2,
+          'max_tokens': 1024, // Required by Novita API
         }),
       );
 
       if (response.statusCode != 200) {
         session.log('Novita AI API Error: ${response.statusCode} - ${response.body}', level: LogLevel.error);
-        return _fallbackParsing(userMessage);
+        // Return user-friendly message for API errors (auth, rate limit, etc.)
+        return AIResponse(
+          intent: TaskIntent.unknown,
+          message: "I'm having trouble connecting to the AI service. Please check that your API key is configured correctly and try again.",
+          taskData: null,
+        );
       }
 
       final data = jsonDecode(response.body);
-      final responseText = data['choices'][0]['message']['content'] as String? ?? '';
-      
-      print('DEBUG: Raw AI Response: $responseText');
-      session.log('Raw AI Response: $responseText');
+      final messageObj = data['choices']?[0]?['message'];
+      // Novita may return content as string or in reasoning_content for some models
+      final responseText = (messageObj?['content'] ?? messageObj?['reasoning_content']) as String? ?? '';
       
       // Parse the AI response to extract task data and intent
-      return _parseAIResponse(responseText, userMessage);
+      return _parseAIResponse(session, responseText, userMessage);
     } catch (e, stack) {
-      print('CRITICAL AI ERROR: $e');
-      print(stack);
-      session.log('AI Service Error: $e', level: LogLevel.error);
-      return _fallbackParsing(userMessage);
+      session.log('AI Service Error: $e\n$stack', level: LogLevel.error);
+      return AIResponse(
+        intent: TaskIntent.unknown,
+        message: "I encountered an error processing your request. Please try again.",
+        taskData: null,
+      );
     }
   }
 
@@ -115,7 +124,7 @@ Rules:
 Return ONLY valid JSON, no markdown or extra text.''';
   }
 
-  AIResponse _parseAIResponse(String responseText, String originalMessage) {
+  AIResponse _parseAIResponse(Session session, String responseText, String originalMessage) {
     try {
       // Clean up markdown code blocks if present
       String cleanText = responseText;
@@ -153,7 +162,7 @@ Return ONLY valid JSON, no markdown or extra text.''';
         taskData: taskData,
       );
     } catch (e) {
-      print('DEBUG: AI Parsing Error: $e');
+      session.log('AI Response parsing error: $e', level: LogLevel.warning);
       return _fallbackParsing(originalMessage);
     }
   }

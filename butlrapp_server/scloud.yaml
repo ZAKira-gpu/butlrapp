@@ -12,5 +12,6 @@ project:
   scripts:
     pre_deploy:
       - "serverpod generate"
+      # Uncomment to include Flutter web app in deployment:
       # - "serverpod run flutter_build"
     post_deploy: []

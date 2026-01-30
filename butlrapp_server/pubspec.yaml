@@ -9,7 +9,6 @@ environment:
 dependencies:
   serverpod: 3.2.3
   serverpod_auth_idp_server: 3.2.3
-  google_generative_ai: ^0.7.0
   intl: ^0.19.0
   http: ^1.6.0
 
@@ -30,8 +29,8 @@ serverpod:
       windows: >-
         (if exist web\app rmdir /S /Q web\app)
         & cd /D ..\butlrapp_flutter
-        && flutter build web --base-href /app/ --wasm
+        && flutter build web --base-href /app/ --wasm --no-tree-shake-icons
         && xcopy /E /I /Y build\web ..\butlrapp_server\web\app
       posix: |
         cd ../butlrapp_flutter
-        flutter build web --base-href /app/ --wasm --output ../butlrapp_server/web/app
+        flutter build web --base-href /app/ --wasm --no-tree-shake-icons --output ../butlrapp_server/web/app

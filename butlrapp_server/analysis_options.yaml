@@ -24,6 +24,12 @@ analyzer:
   exclude:
     - lib/src/generated/**
     - test/integration/test_tools/serverpod_test_tools.dart
+    - bin/debug_recurrence.dart
+    - bin/repro_time.dart
+    - bin/test_ai_context.dart
+    - bin/test_gemini.dart
+    - bin/test_novita.dart
+    - bin/wipe_db.dart
 # For more information about the core and recommended set of lints, see
 # https://dart.dev/go/core-lints
 
